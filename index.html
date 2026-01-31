@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DKTravelsMP | Budget Group Trips</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Global */
+body{margin:0;font-family:'Roboto',sans-serif;background:#f5f7fa;color:#333;scroll-behavior:smooth;}
+a{text-decoration:none;}
+h2,h3{margin:10px 0;color:#222;}
+p{margin:5px 0;}
+.container{max-width:1100px;margin:auto;padding:20px;}
+.btn{padding:10px 18px;background:linear-gradient(90deg,#f78c1e,#ffb347);color:#fff;border-radius:6px;font-weight:bold;display:inline-block;margin-top:10px;transition:0.3s;}
+.btn:hover{opacity:0.9;transform:scale(1.05);}
+header{position:fixed;top:0;width:100%;background:#222;color:#fff;z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:15px 20px;box-shadow:0 2px 12px rgba(0,0,0,0.3);}
+header a{color:#fff;margin:0 10px;font-weight:500;transition:0.3s;}
+header a:hover{color:#ffb347;}
+footer{background:#222;color:#fff;text-align:center;padding:15px;margin-top:20px;}
+.whatsapp-btn{position:fixed;bottom:20px;right:20px;background:#25d366;color:#fff;padding:15px;border-radius:50%;font-weight:bold;text-decoration:none;font-size:18px;box-shadow:0 4px 16px rgba(0,0,0,0.3);transition:0.3s;animation:bounce 2s infinite;}
+.whatsapp-btn:hover{transform:scale(1.1);}
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
+
+/* Hero */
+.hero{background:url('https://images.unsplash.com/photo-1501785888041-af3ef285b470') center/cover no-repeat;height:90vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;position:relative;}
+.hero-overlay{background:linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55));padding:40px;width:100%;opacity:0;transform:translateY(20px);animation:fadeUp 1.5s forwards;}
+.hero h1{font-size:42px;margin-bottom:10px;}
+.hero p{font-size:20px;margin-bottom:20px;}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+
+/* Packages */
+.package{background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.1);margin-bottom:30px;overflow:hidden;transition:0.3s;opacity:0;transform:translateY(20px);}
+.package.show{opacity:1;transform:translateY(0);transition:all 0.6s ease;}
+.package-header{padding:20px;background:linear-gradient(90deg,#f78c1e,#ffb347);color:#fff;font-size:22px;font-weight:bold;text-shadow:1px 1px 4px rgba(0,0,0,0.3);}
+.package-duration{padding:10px 20px;font-size:16px;color:#555;background:#fdf5eb;}
+.package-itinerary-btn{display:block;padding:12px 20px;background:#ffb347;color:#222;font-weight:bold;border:none;cursor:pointer;width:100%;text-align:left;font-size:16px;outline:none;transition:0.3s;}
+.package-itinerary-btn:hover{background:orange;color:#fff;}
+.package-itinerary-btn:after{content:"▶";float:right;transition:0.3s;}
+.package-itinerary-btn.active:after{content:"▼";}
+.package-content{max-height:0;overflow:hidden;transition:max-height 0.5s ease;padding:0 20px;background:#fff;}
+.package-content p{margin:8px 0;}
+.package-price-book{display:flex;justify-content:space-between;align-items:center;padding:15px 20px;background:#f9f9f9;flex-wrap:wrap;}
+.package-price{font-size:20px;font-weight:bold;color:#f78c1e;}
+
+/* WhatsApp Form */
+#whatsappForm{display:flex; flex-wrap:wrap; gap:10px; margin-top:15px;}
+#whatsappForm input, #whatsappForm select{flex:1; min-width:150px; padding:10px; font-size:16px; border-radius:6px; border:1px solid #ccc;}
+#whatsappForm textarea{width:100%; margin-top:10px; padding:10px; font-size:16px; min-height:80px; border-radius:6px; border:1px solid #ccc;}
+#whatsappForm button{width:100%; margin-top:10px; padding:12px; background:linear-gradient(90deg,#f78c1e,#ffb347); color:white; border:none; cursor:pointer; font-size:16px; border-radius:6px; transition:0.3s;}
+#whatsappForm button:hover{opacity:0.9; transform:scale(1.03);}
+
+/* Responsive */
+@media(max-width:768px){.package-price-book{flex-direction:column;align-items:flex-start;}}
+</style>
+</head>
+<body>
+
+<header>
+<div><strong>DKTravelsMP</strong></div>
+<nav>
+<a href="#packages">Packages</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+<div class="hero-overlay">
+<h1>Explore with DKTravelsMP</h1>
+<p>Solo, Friends Group, Family & Couples</p>
+<a class="btn" href="https://wa.me/918878131348">Book on WhatsApp</a>
+</div>
+</section>
+
+<div class="container" id="packages">
+<h2>Our Popular Packages</h2>
+
+<!-- Package Templates -->
+<div class="package">
+<div class="package-header">Manali Kasol 6D/5N</div>
+<div class="package-duration">6 Days / 5 Nights</div>
+<button class="package-itinerary-btn">View Full Itinerary</button>
+<div class="package-content">
+<p><strong>DAY 1:</strong> Delhi → Manali, Evening departure, meet Trip Captain, overnight journey.</p>
+<p><strong>DAY 2:</strong> Manali local sightseeing: Hadimba Temple, Tibetan Monastery, Van Vihar, Mall Road. Evening DJ Night & Bonfire. Dinner included.</p>
+<p><strong>DAY 3:</strong> Sissu Village – Atal Tunnel – Solang Valley. Breakfast & Dinner. Hotel stay. DJ & Bonfire.</p>
+<p><strong>DAY 4:</strong> Manali → Kullu → Kasol. Optional rafting/paragliding (own cost). Riverside campsite. DJ & Bonfire. Breakfast & Dinner.</p>
+<p><strong>DAY 5:</strong> Kasol – Manikaran – Delhi. Explore Kasol market & hot springs. Breakfast. Overnight journey.</p>
+<p><strong>DAY 6:</strong> Reach Delhi. Trip ends.</p>
+</div>
+<div class="package-price-book">
+<div class="package-price">₹6,999</div>
+<a class="btn" href="https://wa.me/918878131348">Book Now</a>
+</div>
+</div>
+
+<div class="package">
+<div class="package-header">Manali Kasol 5D/4N</div>
+<div class="package-duration">5 Days / 4 Nights</div>
+<button class="package-itinerary-btn">View Full Itinerary</button>
+<div class="package-content">
+<p><strong>DAY 1:</strong> Depart Delhi/Chandigarh, evening overnight journey. Dinner self-expense.</p>
+<p><strong>DAY 2:</strong> Arrival Manali, hotel check-in. Hidimba Temple, Mall Road, Van Vihar, Buddhist Monastery, Old Manali streets. Dinner & overnight stay.</p>
+<p><strong>DAY 3:</strong> Solang – Atal Tunnel – Sissu/Koksar. Return hotel for dinner & bonfire.</p>
+<p><strong>DAY 4:</strong> Kullu – River Rafting / Paragliding (self-expense), Kasol, Manikaran. Evening departure to Delhi.</p>
+<p><strong>DAY 5:</strong> Arrival Delhi early morning. Trip ends.</p>
+<p><strong>Price Options:</strong> Quad ₹5,999 | Triple ₹6,499 | Double ₹6,999</p>
+</div>
+<div class="package-price-book">
+<div class="package-price">₹5,999+</div>
+<a class="btn" href="https://wa.me/918878131348">Book Now</a>
+</div>
+</div>
+
+<div class="package">
+<div class="package-header">Kedarnath Tungnath 6D/5N</div>
+<div class="package-duration">6 Days / 5 Nights</div>
+<button class="package-itinerary-btn">View Full Itinerary</button>
+<div class="package-content">
+<p><strong>DAY 1:</strong> Depart Delhi → Haridwar. Meet at Akshardham Metro. Overnight journey.</p>
+<p><strong>DAY 2:</strong> Arrival Rishikesh/Haridwar. Depart to Guptkashi/Phata via Devprayag. Lunch & sightseeing. Evening hotel check-in & dinner.</p>
+<p><strong>DAY 3:</strong> Trek to Kedarnath. Jeep to Gaurikund (own cost). Trek 16-18km. Check-in hotel/camp. Dinner & overnight stay.</p>
+<p><strong>DAY 4:</strong> Kedarnath Darshan & trek down. Visit Bhairav Nath Temple. Return hotel. Dinner & overnight stay.</p>
+<p><strong>DAY 5:</strong> Trek to Tungnath & Chandrashila Peak. Trek down to Chopta. Visit Dharadevi Temple. Evening Ganga Aarti at Haridwar. Overnight journey to Delhi.</p>
+<p><strong>DAY 6:</strong> Reach Delhi early morning. Trip ends.</p>
+</div>
+<div class="package-price-book">
+<div class="package-price">₹8,999</div>
+<a class="btn" href="https://wa.me/918878131348">Book Now</a>
+</div>
+</div>
+
+<div class="package">
+<div class="package-header">Kedarnath 5D/4N</div>
+<div class="package-duration">5 Days / 4 Nights</div>
+<button class="package-itinerary-btn">View Full Itinerary</button>
+<div class="package-content">
+<p><strong>DAY 1:</strong> Depart Delhi → Haridwar. Meet at Akshardham Metro. Overnight journey.</p>
+<p><strong>DAY 2:</strong> Arrival Rishikesh/Haridwar. Depart to Guptkashi/Phata via Devprayag. Lunch & sightseeing. Evening hotel check-in & dinner.</p>
+<p><strong>DAY 3:</strong> Trek to Kedarnath. Jeep to Gaurikund (own cost). Trek 16-18km. Check-in hotel/camp. Dinner & overnight stay.</p>
+<p><strong>DAY 4:</strong> Kedarnath Darshan & trek down. Visit Bhairav Nath Temple. Return hotel. Dinner & overnight stay.</p>
+<p><strong>DAY 5:</strong> Depart to Delhi via Srinagar. Visit Dharadevi Temple. Reach Delhi evening. Trip ends.</p>
+</div>
+<div class="package-price-book">
+<div class="package-price">₹7,999</div>
+<a class="btn" href="https://wa.me/918878131348">Book Now</a>
+</div>
+</div>
+
+</div>
+
+<!-- Contact / WhatsApp Form -->
+<div class="container" id="contact">
+<h2>Book Your Trip</h2>
+<div id="whatsappForm">
+<input type="text" placeholder="Your Name">
+<input type="text" placeholder="Phone Number">
+<select>
+<option>Manali 6D/5N</option>
+<option>Manali Kasol 5D/4N</option>
+<option>Kedarnath Tungnath 6D/5N</option>
+<option>Kedarnath Tungnath 5D/4N</option>
+</select>
+<textarea placeholder="Message"></textarea>
+<button onclick="sendWhatsApp()">Submit Inquiry</button>
+</div>
+</div>
+
+<footer>
+📞 8878131348 | Instagram: <a href="https://instagram.com/dktravelsmp" target="_blank" style="color:#fff;">@dktravelsmp</a><br>
+&copy; 2026 DKTravelsMP. All Rights Reserved.
+</footer>
+
+<a href="https://wa.me/918878131348" class="whatsapp-btn" target="_blank">WhatsApp</a>
+
+<script>
+// Scroll animation for packages
+const packages = document.querySelectorAll('.package');
+window.addEventListener('scroll', function(){
+  packages.forEach(pkg => {
+    const top = pkg.getBoundingClientRect().top;
+    if(top < window.innerHeight - 50){ pkg.classList.add('show'); }
+  });
+});
+
+// Collapsible packages
+document.querySelectorAll('.package-itinerary-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    const content = this.nextElementSibling;
+    content.classList.toggle('open');
+    if(content.style.maxHeight){ content.style.maxHeight = null; } 
+    else{ content.style.maxHeight = content.scrollHeight + "px"; }
+    this.classList.toggle('active');
+  });
+});
+
+// WhatsApp form
+function sendWhatsApp(){
+  var name = document.querySelector('input[placeholder="Your Name"]').value;
+  var phone = document.querySelector('input[placeholder="Phone Number"]').value;
+  var pkg = document.querySelector('select').value;
+  var msg = document.querySelector('textarea').value;
+  if(name=="" || phone==""){ alert("Please fill Name & Phone Number"); return; }
+  var text = "New Trip Inquiry 🚐✨%0A%0A👤 Name: " + name + "%0A📞 Phone: " + phone + "%0A📦 Package: " + pkg + "%0A💬 Message: " + msg;
+  var url = "https://wa.me/918878131348?text=" + text;
+  window.open(url,"_blank");
+}
+</script>
+
+</body>
+</html>
